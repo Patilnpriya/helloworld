@@ -1,6 +1,7 @@
 pipeline{
     agent any
     environment{
+    def mvnHome = tool name: 'Maven', type: 'maven'
     PATH = "/opt/maven/bin:$PATH"
         }
     stages{
