@@ -1,0 +1,20 @@
+pipeline{
+    agent any
+    environment{
+    def mvnHome = tool name: 'Maven', type: 'maven'
+    PATH = "/opt/maven/bin:$PATH"
+        }
+    stages{
+        stage("SCM Checkout"){
+            steps{
+                git 'https://github.com/Patilnpriya/helloworld'
+            }
+        }
+        stage("Maven Build"){
+         steps{
+             sh "${mvnHome}/bin/mvn package"
+           }
+        }
+        
+    }
+}
